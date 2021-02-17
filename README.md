@@ -36,3 +36,11 @@ Request duration
 ```
 rate(go_request_duration_seconds_sum[2m]) / rate(go_request_duration_seconds_total[2m])
 ```
+
+Anomaly Detection
+
+```
+anomaly_detection_output
+```
+
+
