@@ -20,6 +20,9 @@ docker-compose up -d --build python-application
 
 http://localhost:81 #Python
 
+
+http://localhost:81/generate # for generating real time data to be used in anomalie detection dashboard.
+
 ```
 ## Check Dashboards
 ```
