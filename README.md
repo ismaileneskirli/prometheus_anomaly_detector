@@ -28,7 +28,6 @@ http://localhost:3000
 
 ```
 ## Prometheus Queries
-### Golang Examples
 
 Requests per Second over 2minutes
 ```
