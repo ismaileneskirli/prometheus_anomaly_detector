@@ -1,4 +1,4 @@
-0# Prometheus Application Monitoring
+# Prometheus Application Monitoring
 
 To run any of the commands, please ensure you open a terminal and navigate to the path where prometheus folder is located.
 
