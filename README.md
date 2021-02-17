@@ -1,6 +1,6 @@
 0# Prometheus Application Monitoring
 
-To run any of the commands, please ensure you open a terminal and navigate to the path where this readme is located.
+To run any of the commands, please ensure you open a terminal and navigate to the path where prometheus folder is located.
 
 ## Start Prometheus, Grafana & Dashboards
 
