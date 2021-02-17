@@ -12,9 +12,10 @@ docker-compose up -d grafana-dashboards
 
 ## Start the example app 
 
-docker-compose up -d --build python-application
 
 ```
+docker-compose up -d --build python-application
+
 
 ## Generate some requests by opening the application in the browser
 
