@@ -1,7 +1,7 @@
 # Prometheus Application Monitoring
 
-##Prerequisites
-In order to run commands below you need docker engine, docker-compose installed on your machine.
+## Prerequisites
+In order to run commands below, you need docker engine, docker-compose installed on your machine.
 
 ```
 sudo snap install docker
