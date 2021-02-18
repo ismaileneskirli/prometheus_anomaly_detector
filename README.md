@@ -1,6 +1,16 @@
 # Prometheus Application Monitoring
 
-To run any of the commands, please ensure you open a terminal and navigate to the path where prometheus folder is located.
+##Prerequisites
+In order to run commands below you need docker engine, docker-compose installed on your machine.
+
+```
+sudo snap install docker
+sudo snap install docker-compose
+
+```
+
+
+To run any of the commands, please ensure you open a terminal and navigate to the path where prometheus folder is located. If you are not root user simply add sudo.
 
 ## Start Prometheus, Grafana & Dashboards
 
