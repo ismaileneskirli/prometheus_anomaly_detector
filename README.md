@@ -58,7 +58,10 @@ anomaly_detection_output
 ```
 
 
-## TODO
+## TODO API and Postgresql Implementation.
 
-- [ ] First task
-
+- [ ] Pull metrics from prometheus such as cpu usage
+- [ ] Push these metrics into db
+- [ ] Pull 100 elements from db into array
+- [ ] send this array into anomaly detection api in gcp
+- [ ] print api output.
