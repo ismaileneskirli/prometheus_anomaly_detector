@@ -18,6 +18,10 @@ To run any of the commands, please ensure you open a terminal and navigate to th
 docker-compose up -d prometheus
 docker-compose up -d grafana
 docker-compose up -d grafana-dashboards
+
+or simply arrange dependencies and then:
+
+docker-compose up -d --build
 ```
 
 ## Start the example app 
