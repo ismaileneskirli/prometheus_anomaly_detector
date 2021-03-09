@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "coca-cola-datalake-dev",
+    "private_key_id": "1f20c9ac501c2fcadadc27d5d8bf6d30e3e35c1c",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDKuYwWi6bPf6t7\nNk7RQfvUUve00A4hFx384qtOkj60OxYaxQ9rt9cP8yZXK0imwYnBaW6wcLJW8YIX\nb2IlHNQPwkQUJ9yqm84Y2ZkOIgRRuw4wpevRNLydSFhULaUOZqAHCMwHq16zI/pB\neemGgf1xDJeJnB64etsf/N2GNvnP+mbv9DeaElQUCHmn20o/CwZCdbiNVXZ0DVmX\n8df0eYIxlvNb78bPnsW6fsEiGYnrihz5TILKWRw/28ZELZq4cKhzQhLBcC1mjTqd\n+OsC3j9Eob5SBAMgtPITt6qByrrKhBus5bu7P3MaCpaLeCeKUTYKp9jcIE4e50sz\nvcTrm7EZAgMBAAECggEAAuheZgRixB8kqoPA5ad4oTb/box9Z2QZfgMSSfI3DAa8\n7m1dJ0Jfx07Jgf6Q8DNecnO8rrMvG6gjIYrrcXTUZdV3fIKF27yYXCri0x0RyspQ\nDcqTc1C6U9cxzSNKdsZqDS/HHWUL2q3tbPr+qns602BG3CZtGmBIvFC4LLClLKJ4\nRTlSesAtdQuAGQ7flCqmkHCmnfYXr2/ucCEKEN9cIuaf+ftLyP3vf1B4ERdRhPOE\n9ZDp2XVdAWXbn/uy+5IdthsIy7IEMQoelqeg9OJpVrxe/4j8kQd2fj6WOhhBy2/W\nXULQm++fN123iI1c4CM8bs/FnI3fDB+A1PRvNLCoMQKBgQDs9aX52Y+7QnnZhWIp\nPrbuD6CbH0qBObpPrbQPz1Tyqe1gLnwc3GBi/6ae0YJODD2jGC/QPH+LOGowXuhs\noyMYLnvHMavj0yzhKvQQjCXIn7MCgXA5+R/YXWuYXsswJu101mG80x3ZO9V7Rynl\n9yd1hPdc8Ih7yX/0PR3+9oRiCwKBgQDbA60YsZ/z/fXNvFp0DeIOpFcBfALiSsTp\nN7p17BuSLqwPMxjEBDRyutp7N7PviyKPXvfRf+cOpJ8PZxaefH48U9KTzi8TXV5F\noUH2pbw3JhnV/CfpSVg57Y97noJLiha0s1W7tN5KnsUztEQQJRtvWg8krrrKKjlT\nkg7YK5iz6wKBgQDMGMlc6odiQ1+we7KQ0/O8GLm84rbJl29iMbtl4q7IVJSgw2kj\ncq2Sl6BsKwiRMPnmAG8ubO1ufKj6AMUwzVLtARyb9ayYDswZJWYS2qOwqd0Fy3de\nd7V2JwEFvKBGWUEt4XlNqomLEn5OMH1mFftmvaBR7Nuhw2zycbHkaXCdAQKBgQCv\n+mU0aUzf7Rh7hjOb+qfAIhZy7+UVVQShbBDbvaptrCi+Uc09ey91XGQ/C4P+HurX\nDnTLlhzfLDFOXAPVtqxr5uJVtx8mTSh5hFgPSh5QpcGuqdyb2z4T1akrqDKDZeJW\nsZ5ao7rVdHt5zwe9fUNtFo0CaY9W79R+LObWlTkunwKBgHJfR4HE29mrJKa9mqZd\nwLwPSAV04moIZ4nNkdRGysSAnSJrciAN4muqRDkonF865zl2CDZXVpmouF8hSCXH\ntZxEHbhAuZ1XagHcXEwJHw8kyQlrTULTohiw0XOpn2jwb/baBfRcrFDDtLHfdzBy\n3qCfptph5/FIECaH8Ms8qloG\n-----END PRIVATE KEY-----\n",
+    "client_email": "anomaly-detection@coca-cola-datalake-dev.iam.gserviceaccount.com",
+    "client_id": "107759176289918744394",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/anomaly-detection%40coca-cola-datalake-dev.iam.gserviceaccount.com"
+  }
