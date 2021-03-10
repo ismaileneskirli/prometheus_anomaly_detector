@@ -104,7 +104,7 @@ def generate_data():
     anomalyArray = generateArray(20)
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'datalake.json'
     try:
-        ret = predict_json('coca-cola-datalake-dev', model='anomaly_detector', instances=[], data=anomalyArray)
+        ret = predict_json('datalake-name-here', model='anomaly_detector', instances=[], data=anomalyArray)
     except Exception as e:
         print(e)
     for i in range (len(ret)):
