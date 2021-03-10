@@ -30,7 +30,7 @@ def add_new_row(n):
 def get_all():
     # Get all of the data from the db
     rows = []
-    query = "SELECT * FROM numbers"
+    query = "SELECT * FROM numbers ORDER BY timestamp DESC offset 0 rows fetch next 20 rows only"
     result = db.execute(query)
     print(f"Selected {result.rowcount} rows.")
     for row in result.fetchall():
