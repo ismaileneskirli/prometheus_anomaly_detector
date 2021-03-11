@@ -28,9 +28,9 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_SMTP_ENABLED=true
       - GF_SMTP_HOST=smtp.gmail.com:587
-      - GF_SMTP_USER=ienes1043@gmail.com
-      - GF_SMTP_PASSWORD=<9587enes87>
-      - GF_SMTP_FROM_ADDRESS=ienes1043@gmail.com
+      - GF_SMTP_USER=yourmail@gmail.com
+      - GF_SMTP_PASSWORD=<your_password>
+      - GF_SMTP_FROM_ADDRESS=yourmail@gmail.com
   grafana-dashboards:
     image: alpine:3.10
     depends_on:
