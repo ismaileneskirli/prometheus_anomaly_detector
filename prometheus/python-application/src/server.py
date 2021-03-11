@@ -100,10 +100,10 @@ def data_stream():
 # send last 20 row to data and output to the prometheus.
 @app.route("/generate")
 def generate_data():
-    # this func can also be in while true loop, with 20 sec of sleep in each loop last 20 rows are completely different., now it is just for one time.
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'datalake.json'
+    anomalyArray = get_last_twenty()
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'key.json'
     try:
-        ret = predict_json('coca-cola-datalake-dev', model='anomaly_detector', instances=[], data=get_last_twenty())
+        ret = predict_json('datalake-name-here', model='anomaly_detector', instances=[], data=anomalyArray)
     except Exception as e:
         print(e)
     for i in range (len(ret)):
