@@ -24,14 +24,14 @@ or simply arrange dependencies and then:
 docker-compose up -d --build
 ```
 
-## Start the example app 
+## Start the example app
 
 
 ```
 docker-compose up -d --build python-application
 
 
-## Generate some requests by opening the application in the browser
+## Generate some requests by opening the application in the browser, Anomaly detection api takes the last 20 rows as a parameter, so db should be launched before making requests.
 
 http://localhost:81 #Python
 
@@ -64,8 +64,10 @@ anomaly_detection_output
 
 ## TODO API and Postgresql Implementation.
 
-- [ ] Pull metrics from prometheus such as cpu usage
-- [ ] Push these metrics into db / or simply create array in memory, append metrics then push to api, clear repeat this cycle
-- [ ] Pull 100 elements from db into array (https://hackersandslackers.com/python-database-management-sqlalchemy/) Good source for queries. 
-- [ ] send this array into anomaly detection api in gcp
-- [ ] print api output.
+- [x] Generate real-time data stream, with anomalies.(while loop with time.sleep(1))
+- [x] Push these data into db
+- [x] Pull last 20 row from db into (sorted by time stamp),
+- [x] row[0] is number i want to send to API, turn the first element of query into an array.
+- [x] send this array into anomaly detection api in gcp
+- [x] return value of the api is an array of arrays and second element of each array is anomaly_detector_output,assign it.
+- [x] when there is a value below 0 alert it. ( this needs to be configured once composed up.)

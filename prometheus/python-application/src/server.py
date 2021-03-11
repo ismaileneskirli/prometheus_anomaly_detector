@@ -27,15 +27,15 @@ def add_new_row(n):
         str(n) + "," + \
         str(int(round(time.time() * 1000))) + ");")
 
-def get_all():
-    # Get all of the data from the db
+def get_last_twenty():
+    # Get the last 20 from from the db, create an array from the first column.
     rows = []
-    query = "SELECT * FROM numbers"
+    query = "SELECT * FROM numbers ORDER BY timestamp DESC offset 0 rows fetch next 20 rows only"
     result = db.execute(query)
     print(f"Selected {result.rowcount} rows.")
     for row in result.fetchall():
         rows.append(row[0])
-    return(jsonify(rows))
+    return(rows)
 
 app = Flask(__name__)
 
@@ -47,7 +47,7 @@ graphs['c'] = Counter('python_request_operations_total', 'The total number of pr
 graphs['h'] = Histogram('python_request_duration_seconds', 'Histogram for the duration in seconds.', buckets=(1, 2, 5, 6, 10, _INF))
 graphs['f'] = Gauge ('anomaly_detector_output','Anomaly model outputs, -1 means outlier value')
 
- ########################################### Anomaly API #############################################################
+ ##### Anomaly API (second output is the value if -1 it means anomaly) #############################################################
 def predict_json(project, model, instances, data, version=None):
     service = googleapiclient.discovery.build('ml', 'v1')
     name = 'projects/{}/models/{}'.format(project, model)
@@ -66,15 +66,14 @@ def predict_json(project, model, instances, data, version=None):
 
     return response['predictions']
 
-# Create Dummy Data.
-def generateArray(n):
-    array = []
-    for i in range (n):
-        array.append([str(i),5])
-    array.append([str(n+1),20])
-    print(array)
-    return array
-
+# # Create Dummy Data. with 1 anomalie.
+# def generateArray(n):
+#     array = []
+#     for i in range (n):
+#         array.append([str(i),5])
+#     array.append([str(n+1),20])
+#     print(array)
+#     return array
 
 @app.route("/")
 def hello():
@@ -91,20 +90,20 @@ def requests_count():
     for k,v in graphs.items():
         res.append(prometheus_client.generate_latest(v))
     return Response(res, mimetype="text/plain")
-#For testing if db actually works.
-@app.route("/show")
-def show_db():
-    for i in range (0,3):
-        add_new_row(random.randint(1,10000));
-    return(get_all())
 
-# API usage and sent output to prometheus.
+#For generating a data-stream
+@app.route("/data-stream")
+def data_stream():
+    while True:
+        add_new_row(random.randint(1,1000));
+
+# send last 20 row to data and output to the prometheus.
 @app.route("/generate")
 def generate_data():
-    anomalyArray = generateArray(20)
+    # this func can also be in while true loop, with 20 sec of sleep in each loop last 20 rows are completely different., now it is just for one time.
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'datalake.json'
     try:
-        ret = predict_json('coca-cola-datalake-dev', model='anomaly_detector', instances=[], data=anomalyArray)
+        ret = predict_json('coca-cola-datalake-dev', model='anomaly_detector', instances=[], data=get_last_twenty())
     except Exception as e:
         print(e)
     for i in range (len(ret)):
