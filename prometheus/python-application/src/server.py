@@ -102,7 +102,7 @@ def show_db():
 @app.route("/generate")
 def generate_data():
     anomalyArray = generateArray(20)
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'datalake.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'key.json'
     try:
         ret = predict_json('datalake-name-here', model='anomaly_detector', instances=[], data=anomalyArray)
     except Exception as e:
