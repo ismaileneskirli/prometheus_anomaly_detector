@@ -1,5 +1,5 @@
 # Prometheus Application Monitoring
-
+![architecture](https://user-images.githubusercontent.com/69651222/110786058-bdfd9400-827c-11eb-9341-979fc3d73dd3.jpg)
 ## Prerequisites
 In order to run commands below, you need docker engine, docker-compose installed on your machine.
 
