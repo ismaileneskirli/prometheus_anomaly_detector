@@ -8,6 +8,7 @@ import os
 import googleapiclient.discovery
 import logging
 from sqlalchemy import create_engine
+import statistics
 
 DB_NAME = 'anomaly'
 DB_USER = 'admin'
@@ -34,7 +35,7 @@ def get_last_twenty():
     result = db.execute(query)
     print(f"Selected {result.rowcount} rows.")
     for row in result.fetchall():
-        rows.append(row[0])
+        rows.append(int(row[0]))
     return(rows)
 
 app = Flask(__name__)
@@ -66,6 +67,20 @@ def predict_json(project, model, instances, data, version=None):
 
     return response['predictions']
 
+################ Use either predict json or this funtion as anomaly detection model
+def anomaly_detector(numberArray):
+    resultArray = []
+    std=statistics.stdev(numberArray)
+    upperBoundry = statistics.mean(numberArray) + (2*std)
+    lowerBoundry = statistics.mean(numberArray) - (2*std)
+    print(std,upperBoundry,lowerBoundry)
+    for number in numberArray:
+        if number<upperBoundry and number>lowerBoundry:
+            resultArray.append(2) #not anomaly
+        else:
+            resultArray.append(-1) # anomaly
+
+    return resultArray
 # # Create Dummy Data. with 1 anomalie.
 # def generateArray(n):
 #     array = []
@@ -82,7 +97,7 @@ def hello():
     time.sleep(0.600)
     end = time.time()
     graphs['h'].observe(end - start)
-    return "Welcome to the Anomaly detector model."
+    return render_template('index.html')
 
 @app.route("/metrics")
 def requests_count():
@@ -95,21 +110,38 @@ def requests_count():
 @app.route("/data-stream")
 def data_stream():
     while True:
-        add_new_row(random.randint(1,1000));
+        add_new_row(random.randint(1,10)) ## should return -1
+        for i in range (0, 18):
+            add_new_row(random.randint(900,1000));
+            time.sleep(0.5)
+
+
+
 
 # send last 20 row to data and output to the prometheus.
-@app.route("/generate")
+@app.route("/detection")
 def generate_data():
-    anomalyArray = get_last_twenty()
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'key.json'
-    try:
-        ret = predict_json('datalake-name-here', model='anomaly_detector', instances=[], data=anomalyArray)
-    except Exception as e:
-        print(e)
-    for i in range (len(ret)):
-        time.sleep(0.600)
-        graphs['f'].set(ret[i][1])
-    return "Metrics are sent !"
+    while True:
+        anomalyArray = get_last_twenty()
+        #################### My anomaly detection model implementation ################
+        outputArray=anomaly_detector(anomalyArray)
+
+        for x in outputArray:
+            print(outputArray[x],type(outputArray[x]))
+            graphs['f'].set(outputArray[x])
+            time.sleep(0.5)
+
+
+    ##################### Anomaly Detection model API used version
+    # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'key.json'
+    # try:
+    #     ret = predict_json('datalake-name-here', model='anomaly_detector', instances=[], data=anomalyArray)
+    # except Exception as e:
+    #     print(e)
+    # for i in range (len(ret)):
+    #     time.sleep(0.600)
+    #     graphs['f'].set(ret[i][1])
+    # return "Metrics are sent !"
 
 if __name__ == '__main__':
     app.run(debug=True)
